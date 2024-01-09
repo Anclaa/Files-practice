@@ -1,0 +1,8 @@
+Leche 5
+Huevos 2
+MortadelaQueso 10
+Cere 5
+Pollo 5
+Arroz 11
+Frijoles 10
+Aceite 0
