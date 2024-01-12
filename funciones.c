@@ -85,7 +85,47 @@ void eliminarElemento(char nombreArchivo[], char elementoEliminar[]) {
         printf("Elemento no encontrado en el archivo.\n");
     }
 }
+void editarElemento(char nombreArchivo[], char elementoEliminar[], char nuevoElemento[], int cant) {
+    FILE *archivo;
+    FILE *archivoTemporal;
+    char buffer[100]; 
+    int eliminado = 0;
+  
+    archivo = fopen(nombreArchivo, "r");
+    if (archivo == NULL) {
+        printf("No se pudo abrir el archivo para eliminar el elemento.\n");
+        return;
+    }
 
+    archivoTemporal = fopen("temp.txt", "w");
+    if (archivoTemporal == NULL) {
+        fclose(archivo);
+        printf("No se pudo crear el archivo temporal.\n");
+        return;
+    }
+
+    while (fgets(buffer, sizeof(buffer), archivo)) {
+        if (strstr(buffer, elementoEliminar) != NULL) {
+            eliminado = 1;
+            fprintf(archivoTemporal, "%s %d\n", nuevoElemento, cant);
+        } else {
+            fputs(buffer, archivoTemporal);
+        }
+    }
+
+    fclose(archivo);
+    fclose(archivoTemporal);
+
+  if (eliminado) {
+      remove(nombreArchivo);
+      rename("temp.txt", nombreArchivo);
+      printf("Elemento editado con éxito.\n");
+  } else {
+      remove("temp.txt");
+      printf("Elemento no encontrado en el archivo.\n");
+  }
+}
+/*
 void editarElemento(char nombreArchivo[], char elementoEliminar[], char nuevoElemento[]) {
     FILE *archivo;
     FILE *archivoTemporal;
@@ -125,4 +165,4 @@ void editarElemento(char nombreArchivo[], char elementoEliminar[], char nuevoEle
         printf("Elemento no encontrado en el archivo.\n");
     }
 }
-
+*/

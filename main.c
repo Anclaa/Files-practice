@@ -10,6 +10,7 @@ int main(void) {
   char bus[50];
   char pe[50];	
   int m;
+  int can;
   char nom_produ[10][50]= {"Leche", "Pan", "Huevos", "Jamon", "Queso", "Cere","Pollo", "Arroz", "Frijoles", "Aceite"};
   int cantidad_produ[10] = {5, 6, 2, 6, 10, 5, 5, 11, 10, 0};
   do{
@@ -44,13 +45,20 @@ int main(void) {
       eliminarElemento("archivo1.txt", pe);
     break;
     case 5:
-      printf("Ingrese el nombre del producto a editar: ");
-      scanf("%s", &pe);
-      printf("Ingrese el nuevo nombre del producto: ");
-      scanf("%s", &p);
-      editarElemento("archivo1.txt", pe, p);
+      printf("Ingrese el nombre del producto a editar: \n");
+      fflush(stdin);
+      fgets(pe, 50, stdin);
+     /* pe[strcspn(pe, "\n")] = 0;*/
+      printf("Ingrese el nuevo nombre del producto: \n");
+      fflush(stdin);
+      fgets(p, 10, stdin);
+     // p[strcspn(p, "\n")] = 0;
+      printf("\nIngrese la cantidad del producto: ");
+      scanf("%d", &can);
+      editarElemento("archivo1.txt", pe, p, can);
     break;
     case 6:
+      printf("Terminando el programa");
       fue=0;
     break;
     default:

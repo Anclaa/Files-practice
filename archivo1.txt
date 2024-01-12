@@ -1,8 +1,11 @@
 Leche 5
+Pan 6
 Huevos 2
-MortadelaQueso 10
+Jamon 6
+Queso 10
 Cere 5
 Pollo 5
 Arroz 11
 Frijoles 10
 Aceite 0
+Pan 5
